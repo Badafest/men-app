@@ -1,0 +1,41 @@
+<%- include("partials/head",{title: "New List"})%>
+<%- include("partials/navbar",{current:2})%>
+<form method="POST" action="/lists" class="white">
+	<section>
+		<div class="formContainer">
+			<label for="title">Title</label>
+			<input style="width:98%" type="text" name="title" id="listTitle" required>
+		</div>
+		<div class="formContainer">
+			<label for="color">Color</label>
+			<select name="color" id="color" hidden>
+				<option value="red">red</option>
+				<option value="green">green</option>
+				<option value="blue">blue</option>
+				<option value="white" selected>white</option>
+			</select>
+			<span id="colorOptions">
+				<span class="red">✓</span>
+				<span class="green">✓</span>
+				<span class="blue">✓</span>
+				<span class="white checked">✓</span>
+			</span>
+		</div>
+	</section>
+	<hr>
+	<section id="listItems">
+		<div class="formContainer">
+			<label for="listItem1">1. </label>
+			<input type="text" name="listItem1" id="listItem1" required>
+			<span class="deleteItem">✘</span>
+		</div>
+	</section>
+	<button hidden id="userFormSubmit"></button>
+</form>
+<footer>
+	<button type="button" id="addItem">Add Item</button>
+	<button id="saveList">Save List</button>
+</footer>
+<script type="text/javascript" src="/new.js"></script>
+</body>
+</html>

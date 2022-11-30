@@ -1,0 +1,24 @@
+<%- include("partials/head",{title: "My Lists"})%>
+<%- include("partials/navbar",{current: 1}) %>
+<main>
+	<%for(list of lists){%>
+		<section id=<%= list.id%> class="<%= list.color%> listView">
+			<div class="listOptions">
+				<button class="listBtn editList">✎</button>
+				<button class="listBtn deleteList">✘</button>
+			</div>
+			<h3><%= list.title%></h3>
+			<ol>
+				<% for(item of list.content){%>
+					<li class=<% if(item.checked){%>
+					<%="done"%>
+					<%}%>> <%= item.item%> </li>
+				<%}%>
+			</ol>
+		</section>
+	<%}%>
+</main>
+<script type="text/javascript" src="/lists.js"></script>
+<script type="text/javascript" src="/axios.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<%- include("partials/head",{title:"My List | "+list.title}) %> 
+<%- include("partials/navbar",{current: 1}) %>
+	<section id=<%= list.id%> class="<%= list.color%> listSection">
+			<h3><%= list.title%></h3>
+			<ol>
+				<% let i=0;%>
+				<% for(item of list.content){%>
+					<li>
+						<label <% if(item.checked){%> <%-"class='done'"%> <%}%> for="item<%= i%>"><%= item.item%></label>
+						<input id="item<%= i%>" name="item<%= i%>" value="done" type="checkbox" <% if(item.checked){%>
+							<%="checked"%>
+							<%}%>>
+					</li>
+					<% i++; %>
+				<%}%>
+			</ol>
+	</section>
+<script type="text/javascript" src="/show.js"></script>
+<script type="text/javascript" src="/axios.min.js"></script>
+</body>
+</html>

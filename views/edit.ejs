@@ -1,0 +1,43 @@
+<%- include("partials/head",{title: "Edit List | "+list.title})%>
+<%- include("partials/navbar",{current:1})%>
+<form method="POST" action="/lists/<%=list.id%>?_method=PUT" class="white">
+	<section>
+		<div class="formContainer">
+			<label for="title">Title</label>
+			<input style="width:98%" type="text" name="title" id="listTitle" required value="<%=list.title%>">
+		</div>
+		<div class="formContainer">
+			<label for="color">Color</label>
+			<select name="color" id="color" hidden>
+				<option value="red" <%if(list.color==="red"){%><%= "selected" %><%}%>>red</option>
+				<option value="green" <%if(list.color==="green"){%><%= "selected" %><%}%>>green</option>
+				<option value="blue" <%if(list.color==="blue"){%><%= "selected" %><%}%>>blue</option>
+				<option value="white" <%if(list.color==="white"){%><%= "selected" %><%}%>>white</option>
+			</select>
+			<span id="colorOptions">
+				<span class="red <%if(list.color==="red"){%><%= "checked" %><%}%>">✓</span>
+				<span class="green <%if(list.color==="green"){%><%= "checked" %><%}%>">✓</span>
+				<span class="blue <%if(list.color==="blue"){%><%= "checked" %><%}%>">✓</span>
+				<span class="white <%if(list.color==="white"){%><%= "checked" %><%}%>">✓</span>
+			</span>
+		</div>
+	</section>
+	<hr>
+	<section id="listItems">
+		<%for(let i=1;i<=list.content.length;i++){%>
+			<div class="formContainer">
+				<label for="listItem<%=i%>"><%=i%>. </label>
+				<input type="text" name="listItem<%=i%>" id="listItem<%=i%>" value="<%= list.content[i-1].item%>" required>
+				<span class='deleteItem'>✘</span>
+			</div>
+		<%}%>
+	</section>
+	<button hidden id="userFormSubmit"></button>
+</form>
+<footer>
+	<button type="button" id="addItem">Add Item</button>
+	<button id="saveList">Save List</button>
+</footer>
+<script type="text/javascript" src="/new.js"></script>
+</body>
+</html>
